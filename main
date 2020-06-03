@@ -10,6 +10,7 @@ local b = w:CreateFolder("Auto Upgrade")
 local Toggleautoupgrade = b:Toggle("Toggle",function(toggle)
 _G.toggleupgrade = toggle
 print(toggle)
+spawn(function()
 while wait(1) and _G.toggleupgrade == true do
 print("iterating!")
 for i,v in pairs(game.Workspace.Towers:GetChildren()) do
@@ -26,10 +27,12 @@ end
 
 end
 end)
+end)
 local bb = w:CreateFolder("Auto Skill")
 local toggleautoskill = bb:Toggle("Toggle",function(toggle)
     _G.toggleskill = toggle
     print(toggle)
+    spawn(function()
     while wait(5) and _G.toggleskill do
         for i,v in pairs(game.Workspace.Towers:GetChildren()) do
             if(v.Type.Value == "Cowboy") then
@@ -59,6 +62,7 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
             end
         end
     end
+end)
 end)
 local bbb = w:CreateFolder("Auto Sell")
 local autosell = bbb:Button("Sell",function()
