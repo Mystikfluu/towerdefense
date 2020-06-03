@@ -60,4 +60,15 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
         end
     end
 end)
+local bbb = w:CreateFolder("Auto Sell")
+local autosell = bbb:Button("Toggle",function()
+    for i,v in pairs(game.Workspace.Towers:GetChildren()) do
+        local args = {
+            [1] = "Towers",
+            [2] = "Sell",
+            [3] = v,
+        }
+        game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
+    end
+end)
 end
