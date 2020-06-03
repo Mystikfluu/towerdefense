@@ -1,0 +1,63 @@
+if(_G.loadeddd) then
+    print("You retard! It's already loaded lol nub")
+else
+_G.loadeddd = true
+local library = loadstring(game:HttpGet(('https://pastebin.com/raw/FsJak6AT')))()
+
+local w = library:CreateWindow("Tower Defense Simulator GUI")
+
+local b = w:CreateFolder("Auto Upgrade")
+local Toggleautoupgrade = b:Toggle("Toggle",function(toggle)
+_G.toggleupgrade = toggle
+print(toggle)
+while wait(1) and _G.toggleupgrade == true do
+print("iterating!")
+for i,v in pairs(game.Workspace.Towers:GetChildren()) do
+local args = {
+    [1] = "Towers",
+    [2] = "Upgrade",
+    [3] = "Set",
+    [4] = {
+        ["Tower"] = v,
+    },
+}
+game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
+end
+
+end
+end)
+local bb = w:CreateFolder("Auto Skill")
+local toggleautoskill = bb:Toggle("Toggle",function(toggle)
+    _G.toggleskill = toggle
+    print(toggle)
+    while wait(5) and _G.toggleskill do
+        for i,v in pairs(game.Workspace.Towers:GetChildren()) do
+            if(v.Type.Value == "Cowboy") then
+                 local args = {
+                    [1] = "Towers",
+                    [2] = "Abilities",
+                    [3] = "Activate",
+                    [4] = {
+                        ["Index"] = "Double Shot",
+                        ["Tower"] = v,
+                    },
+                }
+                game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
+            
+            end
+            if(v.Type.Value == "Commander") then
+                local args = {
+                    [1] = "Towers",
+                    [2] = "Abilities",
+                    [3] = "Activate",
+                    [4] = {
+                        ["Index"] = "Call Of Arms",
+                        ["Tower"] = v,
+                    },
+                }
+                game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
+            end
+        end
+    end
+end)
+end
