@@ -64,7 +64,19 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
     end
 end)
 end)
-local bbb = w:CreateFolder("Auto Sell")
+local bbb = w:CreateFolder("Sell")
+b:Dropdown("Sell",{"Farm","Commander","Rocketeer"},function(mob)
+    for i,v in pairs(game.Workspace.Towers:GetChildren()) do
+        if(v.Type.Value == mob) then
+            local args = {
+                [1] = "Towers",
+                [2] = "Sell",
+                [3] = v,
+            }
+            game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
+        end
+    end
+end)
 local autosell = bbb:Button("Sell",function()
     for i,v in pairs(game.Workspace.Towers:GetChildren()) do
         local args = {
