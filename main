@@ -11,7 +11,8 @@ local Toggleautoupgrade = b:Toggle("Toggle",function(toggle)
 _G.toggleupgrade = toggle
 print(toggle)
 spawn(function()
-while wait(1) and _G.toggleupgrade == true do
+repeat
+wait(1)
 print("iterating!")
 for i,v in pairs(game.Workspace.Towers:GetChildren()) do
 local args = {
@@ -25,7 +26,7 @@ local args = {
 game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
 end
 
-end
+until _G.toggleupgrade == false
 end)
 end)
 local bb = w:CreateFolder("Auto Skill")
@@ -33,7 +34,8 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
     _G.toggleskill = toggle
     print(toggle)
     spawn(function()
-    while wait(5) and _G.toggleskill do
+    repeat
+        wait(5)
         for i,v in pairs(game.Workspace.Towers:GetChildren()) do
             if(v.Type.Value == "Cowboy") then
                  local args = {
@@ -61,7 +63,7 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
                 game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(unpack(args))
             end
         end
-    end
+    until _G.toggleskill == false
 end)
 end)
 local bbb = w:CreateFolder("Sell")
