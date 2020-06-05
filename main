@@ -67,7 +67,7 @@ local toggleautoskill = bb:Toggle("Toggle",function(toggle)
 end)
 end)
 local bbb = w:CreateFolder("Sell")
-b:Dropdown("Sell",{"Farm","Commander","Rocketeer"},function(mob)
+bbb:Dropdown("Sell a single Type",{"Farm","Commander","Rocketeer"},function(mob)
     for i,v in pairs(game.Workspace.Towers:GetChildren()) do
         if(v.Type.Value == mob) then
             local args = {
@@ -79,7 +79,7 @@ b:Dropdown("Sell",{"Farm","Commander","Rocketeer"},function(mob)
         end
     end
 end)
-local autosell = bbb:Button("Sell",function()
+local autosell = bbb:Button("Sell All",function()
     for i,v in pairs(game.Workspace.Towers:GetChildren()) do
         local args = {
             [1] = "Towers",
